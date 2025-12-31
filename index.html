@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不一样的跨年祝福</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #ffd6e7;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 标题 */
+.header {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff4d8b;
+}
+
+/* 弹幕容器 */
+.barrage {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 80px);
+  top: 80px;
+}
+
+/* 祝福卡片 */
+.msg {
+  position: absolute;
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 15px rgba(255,105,180,0.3);
+  font-size: 16px;
+  white-space: nowrap;
+  animation: move 10s linear forwards;
+}
+
+/* 摄像头图标 */
+.msg::before {
+  content: "📷 ";
+}
+
+@keyframes move {
+  from { left: 100%; }
+  to   { left: -100%; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">不一样的跨年祝福</div>
+<div class="barrage" id="barrage"></div>
+
+<script>
+const texts = [
+  "祝你 新年生活明亮 🌞",
+  "祝你 新年和喜欢的事靠近 🌙",
+  "祝你 心中永远有光 ✨",
+  "祝你 新年好运翻倍 🔮",
+  "祝你 新年好事不断 🍀",
+  "祝你 新年快乐 🎆",
+  "祝你 新年平安顺遂 🤍",
+  "祝你 万事皆可期待 💫",
+  "祝你 未来闪闪发光 ⭐",
+  "祝你 所愿皆成 🎯",
+  "祝你 日子温柔 🎀",
+  "祝你 每天都有惊喜 🎁",
+  "祝你 梦想慢慢靠岸 🚢",
+  "祝你 被世界温柔以待 🌸",
+  "祝你 新的一年依然热爱 ❤️",
+  "祝你 笑容常在 😊",
+  "祝你 所行皆坦途 🛤",
+  "祝你 一年胜过一年 📈",
+  "祝你 人间值得 🌍",
+  "祝你 新年快乐呀 ✨"
+];
+
+const barrage = document.getElementById("barrage");
+
+function createMsg() {
+  const div = document.createElement("div");
+  div.className = "msg";
+  div.innerText = texts[Math.floor(Math.random() * texts.length)];
+
+  div.style.top = Math.random() * (window.innerHeight - 140) + "px";
+  div.style.animationDuration = (8 + Math.random() * 6) + "s";
+
+  barrage.appendChild(div);
+
+  setTimeout(() => {
+    div.remove();
+  }, 15000);
+}
+
+setInterval(createMsg, 600);
+</script>
+
+</body>
+</html>
